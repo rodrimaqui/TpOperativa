@@ -1,0 +1,16 @@
+header{
+        padding-top: 10px;
+      }
+body{
+    background-color: #B0E0E6;
+       }
+label{
+      margin: 5px;
+
+      font-weight: bold;
+      font-family: Verdana;
+
+    }
+.center{
+      padding-top: 100px;
+    }
