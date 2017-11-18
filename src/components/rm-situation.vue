@@ -130,9 +130,9 @@
           }
           let pesimist = this.columnResult[0];
           pesimist = this.getTheMaxValue(pesimist);
-          console.log(pesimist);
+          //console.log(pesimist);
           this.bestAlternative = this.getTheBestOption(pesimist);
-          console.log(this.bestAlternative);
+          //console.log(this.bestAlternative);
         },
 
         getOptimist(){
@@ -150,7 +150,8 @@
           }
           let optimist = this.columnResult[0];
           optimist = this.getTheMaxValue(optimist);
-          console.log(optimist);
+          //console.log(optimist);
+          this.bestAlternative = this.getTheBestOption(optimist);
         },
         getLaplace(){
           this.convertToInt();
@@ -168,7 +169,8 @@
           }
           let laplace = this.columnResult[0];
           laplace = this.getTheMaxValue(laplace);
-          console.log(laplace);
+          //console.log(laplace);
+          this.bestAlternative = this.getTheBestOption(laplace);
         },
         getHurwicz(){
           this.convertToInt();
@@ -197,7 +199,8 @@
           }
           let hurwicz = this.columnResult[0];
           hurwicz = this.getTheMaxValue(hurwicz);
-          console.log(hurwicz);
+          //console.log(hurwicz);
+          this.bestAlternative = this.getTheBestOption(hurwicz);
         }
 
     },
