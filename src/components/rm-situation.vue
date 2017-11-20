@@ -12,17 +12,18 @@
           </th>
           <th v-if='columnResult.length'>Result</th>
         </tr>
-        </thead>
-        <tbody>
+      </thead>
+
+      <tbody>
         <tr v-for='(a,i) in situation.situationsAlternatives'>
           <td>
-            {{a}}
+            {{a}} <!-- va renderizando las filas, aqui las alternativas (primer columna) -->
           </td>
-          <td v-for='(s,j) in situation.situationsScenaries'>
+          <td v-for='(s,j) in situation.situationsScenaries'> <!-- va renderizando el resto de la fila -->
             <b-form-input id="exampleInput1"
                           type="text"
-                            v-model='arrayAux[i][j]'
-            ></b-form-input>
+                            v-model='arrayAux[i][j]' 
+            ></b-form-input>                                      <!-- i = fila, j = columna -->
             <td v-if='columnResult.length'> {{columnResult[i]}}
           </td>
         </tr>
@@ -31,12 +32,12 @@
     </table>
 
     <b-dropdown id="ddown1" text="Choose the criterion" class="m-md-2">
-    <b-dropdown-item @click='getPesimist'>pesimist</b-dropdown-item>
+    <b-dropdown-item @click='getPesimist'>Pesimist</b-dropdown-item>
     <b-dropdown-item @click='getOptimist'>Optimist</b-dropdown-item>
     <b-dropdown-item @click='getLaplace'>Laplace</b-dropdown-item>
     <b-dropdown-item @click='changeTheStateOfInputHur'>Hurwicz</b-dropdown-item>
-    <b-dropdown-item disabled>Savage</b-dropdown-item>
-  </b-dropdown>
+    <b-dropdown-item @click='getSavage'>Savage</b-dropdown-item>
+    </b-dropdown>
         <div v-if='inputHur'>
           <b-form-input  id="alphaId"
                         type="number"
@@ -62,7 +63,7 @@
     data(){
       return{
         situation: '',
-        arrayAux: [],
+        arrayAux: [], //array cargado con arrays vacios por cada alternativa que hay
         columnResult: [],
         alpha: 0.5,
         inputHur: false,
@@ -115,13 +116,68 @@
 
           return this.situation.situationsAlternatives[this.columnResult.indexOf(value)];
         },
+        getSavage(){
+          this.convertToInt(); //j = fila, i = columna
+          let result;
+          let greater_of_columns = []; //aca almaceno el mayor de cada columna
+          this.columnResult = [];
+
+          //primer paso, obtengo el mayor de cada columna
+          for(let i = 0; i < this.situation.situationsScenaries.length; i++){
+            result = this.arrayAux[0][i];
+
+            for(let j = 0; j < this.situation.situationsAlternatives.length; j++){
+              if(this.arrayAux[j][i] > result){
+                result =  this.arrayAux[j][i];
+              }
+            }
+            greater_of_columns.push(result);
+          }
+
+          //segundo paso, le resto el a cada elemento el mayor de cada columna jajaja
+          let arrayAux_savage = this.arrayAux;
+          for(let i = 0; i < this.situation.situationsScenaries.length; i++)
+          {
+            for(let j = 0; j < this.situation.situationsAlternatives.length; j++)
+            {
+              arrayAux_savage[j][i] = greater_of_columns[i] - arrayAux_savage[j][i];
+            }
+          }
+
+          //tercer paso, recorro para obtener el mayor de cada fila aj jaj ajj ajajaj
+          let greater_of_rows = [];
+          for(let i = 0; i < this.situation.situationsScenaries.length; i++){
+            result = 0;
+
+            for(let j = 0; j < this.situation.situationsAlternatives.length; j++)
+            {
+              if(arrayAux_savage[i][j] > result){
+                result = arrayAux_savage[i][j];
+              }
+            }
+            greater_of_rows.push(result);
+          }
+          this.columnResult = greater_of_rows;
+
+          //por ultimo, selecciono el menor del mayor de cada fila
+          let no_doy_mas = greater_of_rows[0]; //numero de fila
+
+          for (let i = 0; greater_of_rows.length > i; i++) {
+            if(greater_of_rows[i] < no_doy_mas) {
+              no_doy_mas = greater_of_rows[i];
+            }
+          }
+          console.log(no_doy_mas);
+          this.bestAlternative = this.getTheBestOption(no_doy_mas);
+        },
         getPesimist(){
-          this.convertToInt();
+          this.convertToInt(); //j = fila, i = columna
           let result;
           this.columnResult = [];
-          for(let i = 0;i < this.situation.situationsScenaries.length; i++){
-             result = this.arrayAux[i][0];
-            for(let j = 0;j < this.situation.situationsAlternatives.length; j++){
+          for(let i = 0; i < this.situation.situationsScenaries.length; i++){
+            result = this.arrayAux[i][0];
+
+            for(let j = 0; j < this.situation.situationsAlternatives.length; j++){
               if(this.arrayAux[i][j] < result){
                 result =  this.arrayAux[i][j];
               }
