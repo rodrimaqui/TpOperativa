@@ -1,16 +1,39 @@
 header{
         padding-top: 10px;
       }
-body{
-    background-color: #B0E0E6;
-       }
+body, .app{
+    background-color: #c3b2ff !important;
+}
 label{
       margin: 5px;
 
       font-weight: bold;
-      font-family: Verdana;
-
-    }
+}
 .center{
       padding-top: 100px;
     }
+
+.bg-secondary {
+  background-color: #673dff !important;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.culo {
+  color: black !important;
+}
+
+.culo:hover {
+  color: #84ffff !important;
+}
+
+.poronga {
+  background-color: #673dff !important;
+  color: black;
+}
+
+.poronga:hover {
+  color: #84ffff !important;
+}

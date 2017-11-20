@@ -1,39 +1,51 @@
 <template>
   <div class='app'>
     <b-row>
-     <b-col>
+     <div class="col-md-5">
        <br>
-        <b-form-input id="exampleInput1"
-                      type="text" v-model="scenary"
-                      placeholder='Please set the scenary'
-        ></b-form-input>
-        <br>
-        <b-button type="submit"  variant="primary" @click='addScnary' >Search</b-button>
-        <br>
-        <label><b>Scenaries</b></label>
+       <h5>Insert scenaries</h5>
+       <div class="row">
+          <div class="col-md-10">
+            <b-form-input id="exampleInput1"
+                          type="text" v-model="scenary"
+                          placeholder='Please set the scenary'
+            ></b-form-input>
+          </div>
+          <div class="col-md-2">
+            <b-button type="submit"  variant="primary" @click='addScnary'>Add</b-button>
+          </div>
+        </div>
+        <label v-if="scenaries.length" style="padding-top: 10px"><b>Scenaries</b></label>
         <ul class="list-group">
           <li class="list-group-item" v-for='s in scenaries'>{{s}}</li>
         </ul>
-    </b-col>
-    <b-col>
+    </div>
+    <div class="col-md-7">
       <br>
-        <b-form-input id="exampleInput1"
-                      type="text" v-model="alternative"
-                      placeholder='Please set the alternative'
-        ></b-form-input>
-        <br>
-        <b-button type="submit" variant="primary" @click='addAlternatives' >Search</b-button>
-        <br>
-        <label><b>Alternatives</b></label>
-        <ul class="list-group">
-          <li  class="list-group-item" v-for='a in alternatives'>{{a}}</li>
-        </ul>
-    </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <router-link to="/situation"><b-button type="submit"  variant="primary" @click='addSituations' >Save</b-button></router-link>
-      </b-col>
+        <h5>Insert alternatives</h5>
+        <div class="row">
+          <div class="col-md-7">
+            <b-form-input id="exampleInput1"
+                          type="text" v-model="alternative"
+                          placeholder='Please set the alternative'>
+            </b-form-input>
+          </div>
+          <div class="col-md-4">
+            <b-button type="submit" variant="primary" @click='addAlternatives'>Add</b-button>
+
+            <router-link to="/situation"><b-button type="submit" class="poronga" variant="primary" @click='addSituations'>Save</b-button></router-link>
+
+          </div>
+        </div>
+        <label v-if="alternatives.length" style="padding-top: 10px"><b>Alternatives</b></label>
+        <div class="row">
+          <div class="col-md-9">
+            <ul class="list-group">
+              <li  class="list-group-item" v-for='a in alternatives'>{{a}}</li>
+            </ul>
+          </div>
+        </div>
+    </div>
     </b-row>
   </div>
 </template>

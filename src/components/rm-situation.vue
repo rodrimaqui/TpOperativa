@@ -1,62 +1,78 @@
 <template>
   <div class='app'>
     <div v-if='situation'>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>
-            Alternatives/Scenaries
-          </th>
-          <th scope="col" v-for='s in situation.situationsScenaries'>
-            {{s}}
-          </th>
-          <th v-if='columnResult.length'>Result</th>
-        </tr>
-      </thead>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              Alternatives / Scenaries
+            </th>
+            <th scope="col" v-for='s in situation.situationsScenaries'>
+              {{s}}
+            </th>
+            <th v-if='columnResult.length'>Result</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr v-for='(a,i) in situation.situationsAlternatives'>
-          <td>
-            {{a}} <!-- va renderizando las filas, aqui las alternativas (primer columna) -->
-          </td>
-          <td v-for='(s,j) in situation.situationsScenaries'> <!-- va renderizando el resto de la fila -->
-            <b-form-input id="exampleInput1"
-                          type="text"
-                            v-model='arrayAux[i][j]' 
-            ></b-form-input>                                      <!-- i = fila, j = columna -->
-            <td v-if='columnResult.length'> {{columnResult[i]}}
-          </td>
-        </tr>
-      </tbody>
+        <tbody>
+          <tr v-for='(a,i) in situation.situationsAlternatives'>
+            <td>
+              <b>{{a}}</b> <!-- va renderizando las filas, aqui las alternativas (primer columna) -->
+            </td>
+            <td v-for='(s,j) in situation.situationsScenaries'> <!-- va renderizando el resto de la fila -->
+              <b-form-input id="exampleInput1"
+                            type="text"
+                              v-model='arrayAux[i][j]' 
+              ></b-form-input>                                      <!-- i = fila, j = columna -->
+              <td v-if='columnResult.length'> {{columnResult[i]}} </td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    </table>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="row">
+            <b-dropdown id="ddown1" text="Choose criterion" class="m-md-2">
+            <b-dropdown-item @click='getPesimist'>Pesimist</b-dropdown-item>
+            <b-dropdown-item @click='getOptimist'>Optimist</b-dropdown-item>
+            <b-dropdown-item @click='getLaplace'>Laplace</b-dropdown-item>
+            <b-dropdown-item @click='changeTheStateOfInputHur'>Hurwicz</b-dropdown-item>
+            <b-dropdown-item @click='getSavage'>Savage</b-dropdown-item></b-dropdown>
+          </div>
+        </div>
+        <div class="col-md-8">
 
-    <b-dropdown id="ddown1" text="Choose the criterion" class="m-md-2">
-    <b-dropdown-item @click='getPesimist'>Pesimist</b-dropdown-item>
-    <b-dropdown-item @click='getOptimist'>Optimist</b-dropdown-item>
-    <b-dropdown-item @click='getLaplace'>Laplace</b-dropdown-item>
-    <b-dropdown-item @click='changeTheStateOfInputHur'>Hurwicz</b-dropdown-item>
-    <b-dropdown-item @click='getSavage'>Savage</b-dropdown-item>
-    </b-dropdown>
-        <div v-if='inputHur'>
-          <b-form-input  id="alphaId"
-                        type="number"
-                        v-model='alpha'
-                        placeholder= 'Put your criterion'
-          ></b-form-input>
-        </br>
-        <b-button type="submit" :disabled="!control" variant="primary" @click='getHurwicz' >Evaluate</b-button>
+              <div v-if='inputHur'>
+                <div class="row">
+                  <div class="col-md-3">
+                    <b-form-input  id="alphaId"
+                                    type="number"
+                                    v-model='alpha'
+                                    placeholder= 'Put your criterion'> 
+                    </b-form-input>
+                    </br>
+                  </div>
+                  <div class="col-md-3">
+                    <b-button type="submit" :disabled="!control" variant="primary" @click='getHurwicz'>
+                      Evaluate
+                    </b-button>
+                  </div>
+                </div>
+              </div>
+
+          <br>
+          <h3 v-if='bestAlternative'><b>{{bestAlternative}}</b> is the best alternative.</h3>
+        </div>
       </div>
-      <br>
-      <label v-if='bestAlternative'>The best alternative it is <b>{{bestAlternative}}</b></label>
-  </div>
-  <div v-else>
-    <label>No situations</label>
-  </div>
+    </div>
 
-
+    <div v-else>
+      <h3 class="text-center" style="padding-top: 30px">No situations to display.</h3>
+    </div>
   </div>
 </template>
+
 <script>
   export default{
     name:'rmSituation',
@@ -135,7 +151,7 @@
           }
 
           //segundo paso, le resto el a cada elemento el mayor de cada columna jajaja
-          let arrayAux_savage = this.arrayAux;
+          let arrayAux_savage = this.duplicateArrayOfArrays(this.arrayAux);
           for(let i = 0; i < this.situation.situationsScenaries.length; i++)
           {
             for(let j = 0; j < this.situation.situationsAlternatives.length; j++)
@@ -169,6 +185,17 @@
           }
           console.log(no_doy_mas);
           this.bestAlternative = this.getTheBestOption(no_doy_mas);
+        },
+        duplicateArrayOfArrays(array){
+          let duplicated = [];
+          for(let i = 0; i < this.situation.situationsScenaries.length; i++){
+            let innerArray = [];
+            for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
+              innerArray.push(array[i][j]);
+            }
+            duplicated.push(innerArray);
+          }
+          return duplicated;
         },
         getPesimist(){
           this.convertToInt(); //j = fila, i = columna
