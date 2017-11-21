@@ -134,71 +134,54 @@
 
           return this.situation.situationsAlternatives[this.columnResult.indexOf(value)];
         },
-        getSavage(){
-          this.convertToInt(); //j = fila, i = columna
-          let result;
-          let greater_of_columns = []; //aca almaceno el mayor de cada columna
-          this.columnResult = [];
+        newArray(aux){
+    				let copy = [];
+    				for (let i=0;i<aux;i++) {
+    					copy[i] = [];
+    				    copy[i].push(...this.arrayAux[i]);
+    				  }
+    				return copy;
 
-          //primer paso, obtengo el mayor de cada columna
-          for(let i = 0; i < this.situation.situationsScenaries.length; i++){
-            result = this.arrayAux[0][i];
+    		},
+        getSavage() {
+				this.convertToInt();
+				 this.columnResult = [];
 
-            for(let j = 0; j < this.situation.situationsAlternatives.length; j++){
-              if(this.arrayAux[j][i] > result){
-                result =  this.arrayAux[j][i];
-              }
-            }
-            greater_of_columns.push(result);
-          }
+				let newArrayCopy = this.newArray(this.situation.situationsAlternatives.length);
 
-          //segundo paso, le resto el a cada elemento el mayor de cada columna jajaja
-          let arrayAux_savage = this.duplicateArrayOfArrays(this.arrayAux);
-          for(let i = 0; i < this.situation.situationsScenaries.length; i++)
-          {
-            for(let j = 0; j < this.situation.situationsAlternatives.length; j++)
-            {
-              arrayAux_savage[j][i] = greater_of_columns[i] - arrayAux_savage[j][i];
-            }
-          }
+        for(let i=0;i<this.situation.situationsScenaries.length;i++){
+					let bigger = this.arrayAux[0][i];
+					for(let j = 0;j < this.situation.situationsAlternatives.length;j++){
+						if(this.arrayAux[j][i] > bigger){
+							bigger = this.arrayAux[j][i];
+						}
+					}
+					for(let j=0;j<this.situation.situationsAlternatives.length;j++){
+						newArrayCopy[j][i] = bigger - newArrayCopy[j][i];
+					}
+				}
+				for(let i=0;i<this.situation.situationsAlternatives.length;i++){
+					let result = newArrayCopy[i][0];
+					for(let j=0;j<this.situation.situationsScenaries.length;j++){
+						if(newArrayCopy[i][j]>result){
+							result = newArrayCopy[i][j];
+						}
+					}
 
-          //tercer paso, recorro para obtener el mayor de cada fila aj jaj ajj ajajaj
-          let greater_of_rows = [];
-          for(let i = 0; i < this.situation.situationsScenaries.length; i++){
-            result = 0;
+					this.columnResult.push(result);
+				}
 
-            for(let j = 0; j < this.situation.situationsAlternatives.length; j++)
-            {
-              if(arrayAux_savage[i][j] > result){
-                result = arrayAux_savage[i][j];
-              }
-            }
-            greater_of_rows.push(result);
-          }
-          this.columnResult = greater_of_rows;
+				let result = this.columnResult[0];
+				for(let i=0;i<this.columnResult.length;i++){
+					if(this.columnResult[i]<result){
+						result = this.columnResult[i];
+					}
+				}
 
-          //por ultimo, selecciono el menor del mayor de cada fila
-          let no_doy_mas = greater_of_rows[0]; //numero de fila
+          this.bestAlternative = this.getTheBestOption(result);
 
-          for (let i = 0; greater_of_rows.length > i; i++) {
-            if(greater_of_rows[i] < no_doy_mas) {
-              no_doy_mas = greater_of_rows[i];
-            }
-          }
-          console.log(no_doy_mas);
-          this.bestAlternative = this.getTheBestOption(no_doy_mas);
-        },
-        duplicateArrayOfArrays(array){
-          let duplicated = [];
-          for(let i = 0; i < this.situation.situationsScenaries.length; i++){
-            let innerArray = [];
-            for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
-              innerArray.push(array[i][j]);
-            }
-            duplicated.push(innerArray);
-          }
-          return duplicated;
-        },
+			},
+
         getPesimist(){
           this.convertToInt(); //j = fila, i = columna
           let result;
@@ -259,6 +242,7 @@
           //console.log(laplace);
           this.bestAlternative = this.getTheBestOption(laplace);
         },
+
         getHurwicz(){
           this.convertToInt();
           this.changeTheStateOfInputHur();
