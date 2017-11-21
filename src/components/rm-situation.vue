@@ -22,7 +22,7 @@
             <td v-for='(s,j) in situation.situationsScenaries'> <!-- va renderizando el resto de la fila -->
               <b-form-input id="exampleInput1"
                             type="text"
-                              v-model='arrayAux[i][j]' 
+                              v-model='arrayAux[i][j]'
               ></b-form-input>                                      <!-- i = fila, j = columna -->
               <td v-if='columnResult.length'> {{columnResult[i]}} </td>
             </td>
@@ -49,7 +49,7 @@
                     <b-form-input  id="alphaId"
                                     type="number"
                                     v-model='alpha'
-                                    placeholder= 'Put your criterion'> 
+                                    placeholder= 'Put your criterion'>
                     </b-form-input>
                     </br>
                   </div>
@@ -104,11 +104,13 @@
         }
       },
         convertToInt(){
+
           for(let i = 0; i < this.situation.situationsScenaries.length; i++){
             for(let j=0; j < this.situation.situationsAlternatives.length; j++){
-              this.arrayAux[i][j] = parseInt(this.arrayAux[i][j]);
+              this.arrayAux[j][i] = parseInt(this.arrayAux[j][i]);
             }
           }
+
         },
         getTheMaxValue(value){
           for(let i = 0; i < this.columnResult.length; i++){
@@ -201,10 +203,11 @@
           this.convertToInt(); //j = fila, i = columna
           let result;
           this.columnResult = [];
-          for(let i = 0; i < this.situation.situationsScenaries.length; i++){
+
+          for(let i = 0; i < this.situation.situationsAlternatives.length; i++){
             result = this.arrayAux[i][0];
 
-            for(let j = 0; j < this.situation.situationsAlternatives.length; j++){
+            for(let j = 0; j < this.situation.situationsScenaries.length; j++){
               if(this.arrayAux[i][j] < result){
                 result =  this.arrayAux[i][j];
               }
@@ -212,6 +215,7 @@
             this.columnResult.push(result);
           }
           let pesimist = this.columnResult[0];
+
           pesimist = this.getTheMaxValue(pesimist);
           //console.log(pesimist);
           this.bestAlternative = this.getTheBestOption(pesimist);
@@ -222,9 +226,9 @@
           this.convertToInt();
           this.columnResult = [];
           let result;
-          for(let i = 0;i < this.situation.situationsScenaries.length; i++){
+          for(let i = 0;i < this.situation.situationsAlternatives.length; i++){
              result = this.arrayAux[i][0];
-            for(let j = 0;j < this.situation.situationsAlternatives.length; j++){
+            for(let j = 0;j < this.situation.situationsScenaries.length; j++){
               if(this.arrayAux[i][j] > result){
                 result =  this.arrayAux[i][j];
               }
@@ -239,11 +243,11 @@
         getLaplace(){
           this.convertToInt();
           this.columnResult = [];
-          for(let i = 0; i < this.situation.situationsScenaries.length; i++){
+          for(let i = 0; i < this.situation.situationsAlternatives.length; i++){
             let cant = 0;
             let sum = 0;
             let ave = 0;
-            for(let j = 0; j < this.situation.situationsAlternatives.length; j++){
+            for(let j = 0; j < this.situation.situationsScenaries.length; j++){
               sum += this.arrayAux[i][j];
               cant++;
             }
@@ -262,16 +266,16 @@
           let result;
           this.columnResult = [];
 
-          for(let i = 0; i < this.situation.situationsScenaries.length; i++){
+          for(let i = 0; i < this.situation.situationsAlternatives.length; i++){
             let bigger = this.arrayAux[i][0];
             let smaller = this.arrayAux[i][0];
 
-            for(let j = 0; j < this.situation.situationsAlternatives.length; j++){
+            for(let j = 0; j < this.situation.situationsScenaries.length; j++){
               if(bigger < this.arrayAux[i][j]){
                 bigger = this.arrayAux[i][j];
               }
             }
-            for(let j = 0; j < this.situation.situationsAlternatives.length; j++){
+            for(let j = 0; j < this.situation.situationsScenaries.length; j++){
                 if(smaller > this.arrayAux[i][j]){
                   smaller = this.arrayAux[i][j];
                 }

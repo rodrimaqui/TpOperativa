@@ -28331,7 +28331,7 @@ var render = function() {
             _c(
               "router-link",
               { attrs: { to: "/" } },
-              [_c("b-navbar-brand", [_vm._v("MayeDecision")])],
+              [_c("b-navbar-brand", [_c("b", [_vm._v("ｄｅｃｉｓｉｏｎｓ ｔｏｏｌ")])])],
               1
             ),
             _vm._v(" "),
@@ -28346,8 +28346,8 @@ var render = function() {
                     _c("router-link", { attrs: { to: "/add" } }, [
                       _c(
                         "a",
-                        { staticClass: "nav-link", attrs: { href: "#" } },
-                        [_vm._v("Add")]
+                        { staticClass: "nav-link culo", attrs: { href: "#" } },
+                        [_c("b", [_vm._v("Create matrix")])]
                       )
                     ])
                   ],
@@ -28361,8 +28361,8 @@ var render = function() {
                     _c("router-link", { attrs: { to: "/situation" } }, [
                       _c(
                         "a",
-                        { staticClass: "nav-link", attrs: { href: "#" } },
-                        [_vm._v("Situation")]
+                        { staticClass: "nav-link culo", attrs: { href: "#" } },
+                        [_c("b", [_vm._v("Situation")])]
                       )
                     ])
                   ],
@@ -28543,7 +28543,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -28553,6 +28553,18 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -28641,92 +28653,139 @@ var render = function() {
     "div",
     { staticClass: "app" },
     [
-      _c(
-        "b-row",
-        [
-          _c(
-            "b-col",
-            [
-              _c("br"),
-              _vm._v(" "),
-              _c("b-form-input", {
-                attrs: {
-                  id: "exampleInput1",
-                  type: "text",
-                  placeholder: "Please set the scenary"
-                },
-                model: {
-                  value: _vm.scenary,
-                  callback: function($$v) {
-                    _vm.scenary = $$v
+      _c("b-row", [
+        _c("div", { staticClass: "col-md-5" }, [
+          _c("br"),
+          _vm._v(" "),
+          _c("h5", [_vm._v("Insert scenaries")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-10" },
+              [
+                _c("b-form-input", {
+                  attrs: {
+                    id: "exampleInput1",
+                    type: "text",
+                    placeholder: "Please set the scenary"
                   },
-                  expression: "scenary"
-                }
-              }),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "b-button",
-                {
-                  attrs: { type: "submit", variant: "primary" },
-                  on: { click: _vm.addScnary }
-                },
-                [_vm._v("Search")]
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("label", [_c("b", [_vm._v("Scenaries")])]),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "list-group" },
-                _vm._l(_vm.scenaries, function(s) {
-                  return _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v(_vm._s(s))
-                  ])
+                  model: {
+                    value: _vm.scenary,
+                    callback: function($$v) {
+                      _vm.scenary = $$v
+                    },
+                    expression: "scenary"
+                  }
                 })
-              )
-            ],
-            1
-          ),
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-2" },
+              [
+                _c(
+                  "b-button",
+                  {
+                    attrs: { type: "submit", variant: "primary" },
+                    on: { click: _vm.addScnary }
+                  },
+                  [_vm._v("Add")]
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm.scenaries.length
+            ? _c("label", { staticStyle: { "padding-top": "10px" } }, [
+                _c("b", [_vm._v("Scenaries")])
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
-            "b-col",
-            [
-              _c("br"),
-              _vm._v(" "),
-              _c("b-form-input", {
-                attrs: {
-                  id: "exampleInput1",
-                  type: "text",
-                  placeholder: "Please set the alternative"
-                },
-                model: {
-                  value: _vm.alternative,
-                  callback: function($$v) {
-                    _vm.alternative = $$v
+            "ul",
+            { staticClass: "list-group" },
+            _vm._l(_vm.scenaries, function(s) {
+              return _c("li", { staticClass: "list-group-item" }, [
+                _vm._v(_vm._s(s))
+              ])
+            })
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-7" }, [
+          _c("br"),
+          _vm._v(" "),
+          _c("h5", [_vm._v("Insert alternatives")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "div",
+              { staticClass: "col-md-7" },
+              [
+                _c("b-form-input", {
+                  attrs: {
+                    id: "exampleInput1",
+                    type: "text",
+                    placeholder: "Please set the alternative"
                   },
-                  expression: "alternative"
-                }
-              }),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "b-button",
-                {
-                  attrs: { type: "submit", variant: "primary" },
-                  on: { click: _vm.addAlternatives }
-                },
-                [_vm._v("Search")]
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("label", [_c("b", [_vm._v("Alternatives")])]),
-              _vm._v(" "),
+                  model: {
+                    value: _vm.alternative,
+                    callback: function($$v) {
+                      _vm.alternative = $$v
+                    },
+                    expression: "alternative"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-md-4" },
+              [
+                _c(
+                  "b-button",
+                  {
+                    attrs: { type: "submit", variant: "primary" },
+                    on: { click: _vm.addAlternatives }
+                  },
+                  [_vm._v("Add")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  { attrs: { to: "/situation" } },
+                  [
+                    _c(
+                      "b-button",
+                      {
+                        staticClass: "poronga",
+                        attrs: { type: "submit", variant: "primary" },
+                        on: { click: _vm.addSituations }
+                      },
+                      [_vm._v("Save")]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _vm.alternatives.length
+            ? _c("label", { staticStyle: { "padding-top": "10px" } }, [
+                _c("b", [_vm._v("Alternatives")])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-9" }, [
               _c(
                 "ul",
                 { staticClass: "list-group" },
@@ -28736,40 +28795,10 @@ var render = function() {
                   ])
                 })
               )
-            ],
-            1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-row",
-        [
-          _c(
-            "b-col",
-            [
-              _c(
-                "router-link",
-                { attrs: { to: "/situation" } },
-                [
-                  _c(
-                    "b-button",
-                    {
-                      attrs: { type: "submit", variant: "primary" },
-                      on: { click: _vm.addSituations }
-                    },
-                    [_vm._v("Save")]
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
+            ])
+          ])
+        ])
+      ])
     ],
     1
   )
@@ -28875,7 +28904,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -28943,13 +28972,30 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'rmSituation',
   data() {
     return {
       situation: '',
-      arrayAux: [],
+      arrayAux: [], //array cargado con arrays vacios por cada alternativa que hay
       columnResult: [],
       alpha: 0.5,
       inputHur: false,
@@ -28974,9 +29020,10 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
       }
     },
     convertToInt() {
+
       for (let i = 0; i < this.situation.situationsScenaries.length; i++) {
         for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
-          this.arrayAux[i][j] = parseInt(this.arrayAux[i][j]);
+          this.arrayAux[j][i] = parseInt(this.arrayAux[j][i]);
         }
       }
     },
@@ -29000,13 +29047,77 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
       return this.situation.situationsAlternatives[this.columnResult.indexOf(value)];
     },
+    getSavage() {
+      this.convertToInt(); //j = fila, i = columna
+      let result;
+      let greater_of_columns = []; //aca almaceno el mayor de cada columna
+      this.columnResult = [];
+
+      //primer paso, obtengo el mayor de cada columna
+      for (let i = 0; i < this.situation.situationsScenaries.length; i++) {
+        result = this.arrayAux[0][i];
+
+        for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
+          if (this.arrayAux[j][i] > result) {
+            result = this.arrayAux[j][i];
+          }
+        }
+        greater_of_columns.push(result);
+      }
+
+      //segundo paso, le resto el a cada elemento el mayor de cada columna jajaja
+      let arrayAux_savage = this.duplicateArrayOfArrays(this.arrayAux);
+      for (let i = 0; i < this.situation.situationsScenaries.length; i++) {
+        for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
+          arrayAux_savage[j][i] = greater_of_columns[i] - arrayAux_savage[j][i];
+        }
+      }
+
+      //tercer paso, recorro para obtener el mayor de cada fila aj jaj ajj ajajaj
+      let greater_of_rows = [];
+      for (let i = 0; i < this.situation.situationsScenaries.length; i++) {
+        result = 0;
+
+        for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
+          if (arrayAux_savage[i][j] > result) {
+            result = arrayAux_savage[i][j];
+          }
+        }
+        greater_of_rows.push(result);
+      }
+      this.columnResult = greater_of_rows;
+
+      //por ultimo, selecciono el menor del mayor de cada fila
+      let no_doy_mas = greater_of_rows[0]; //numero de fila
+
+      for (let i = 0; greater_of_rows.length > i; i++) {
+        if (greater_of_rows[i] < no_doy_mas) {
+          no_doy_mas = greater_of_rows[i];
+        }
+      }
+      console.log(no_doy_mas);
+      this.bestAlternative = this.getTheBestOption(no_doy_mas);
+    },
+    duplicateArrayOfArrays(array) {
+      let duplicated = [];
+      for (let i = 0; i < this.situation.situationsScenaries.length; i++) {
+        let innerArray = [];
+        for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
+          innerArray.push(array[i][j]);
+        }
+        duplicated.push(innerArray);
+      }
+      return duplicated;
+    },
     getPesimist() {
-      this.convertToInt();
+      this.convertToInt(); //j = fila, i = columna
       let result;
       this.columnResult = [];
-      for (let i = 0; i < this.situation.situationsScenaries.length; i++) {
+
+      for (let i = 0; i < this.situation.situationsAlternatives.length; i++) {
         result = this.arrayAux[i][0];
-        for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
+
+        for (let j = 0; j < this.situation.situationsScenaries.length; j++) {
           if (this.arrayAux[i][j] < result) {
             result = this.arrayAux[i][j];
           }
@@ -29014,6 +29125,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
         this.columnResult.push(result);
       }
       let pesimist = this.columnResult[0];
+
       pesimist = this.getTheMaxValue(pesimist);
       //console.log(pesimist);
       this.bestAlternative = this.getTheBestOption(pesimist);
@@ -29024,9 +29136,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
       this.convertToInt();
       this.columnResult = [];
       let result;
-      for (let i = 0; i < this.situation.situationsScenaries.length; i++) {
+      for (let i = 0; i < this.situation.situationsAlternatives.length; i++) {
         result = this.arrayAux[i][0];
-        for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
+        for (let j = 0; j < this.situation.situationsScenaries.length; j++) {
           if (this.arrayAux[i][j] > result) {
             result = this.arrayAux[i][j];
           }
@@ -29041,11 +29153,11 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
     getLaplace() {
       this.convertToInt();
       this.columnResult = [];
-      for (let i = 0; i < this.situation.situationsScenaries.length; i++) {
+      for (let i = 0; i < this.situation.situationsAlternatives.length; i++) {
         let cant = 0;
         let sum = 0;
         let ave = 0;
-        for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
+        for (let j = 0; j < this.situation.situationsScenaries.length; j++) {
           sum += this.arrayAux[i][j];
           cant++;
         }
@@ -29064,16 +29176,16 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
       let result;
       this.columnResult = [];
 
-      for (let i = 0; i < this.situation.situationsScenaries.length; i++) {
+      for (let i = 0; i < this.situation.situationsAlternatives.length; i++) {
         let bigger = this.arrayAux[i][0];
         let smaller = this.arrayAux[i][0];
 
-        for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
+        for (let j = 0; j < this.situation.situationsScenaries.length; j++) {
           if (bigger < this.arrayAux[i][j]) {
             bigger = this.arrayAux[i][j];
           }
         }
-        for (let j = 0; j < this.situation.situationsAlternatives.length; j++) {
+        for (let j = 0; j < this.situation.situationsScenaries.length; j++) {
           if (smaller > this.arrayAux[i][j]) {
             smaller = this.arrayAux[i][j];
           }
@@ -29106,156 +29218,190 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "app" }, [
     _vm.situation
-      ? _c(
-          "div",
-          [
-            _c("table", { staticClass: "table" }, [
-              _c("thead", [
-                _c(
-                  "tr",
-                  [
-                    _c("th", [
-                      _vm._v("\n          Alternatives/Scenaries\n        ")
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(_vm.situation.situationsScenaries, function(s) {
-                      return _c("th", { attrs: { scope: "col" } }, [
-                        _vm._v("\n          " + _vm._s(s) + "\n        ")
-                      ])
-                    }),
-                    _vm._v(" "),
-                    _vm.columnResult.length
-                      ? _c("th", [_vm._v("Result")])
-                      : _vm._e()
-                  ],
-                  2
-                )
-              ]),
-              _vm._v(" "),
+      ? _c("div", [
+          _c("table", { staticClass: "table" }, [
+            _c("thead", [
               _c(
-                "tbody",
-                _vm._l(_vm.situation.situationsAlternatives, function(a, i) {
-                  return _c(
-                    "tr",
-                    [
-                      _c("td", [
-                        _vm._v("\n          " + _vm._s(a) + "\n        ")
-                      ]),
-                      _vm._v(" "),
-                      _vm._l(_vm.situation.situationsScenaries, function(s, j) {
-                        return _c(
-                          "td",
-                          [
-                            _c("b-form-input", {
-                              attrs: { id: "exampleInput1", type: "text" },
-                              model: {
-                                value: _vm.arrayAux[i][j],
-                                callback: function($$v) {
-                                  _vm.$set(_vm.arrayAux[i], j, $$v)
-                                },
-                                expression: "arrayAux[i][j]"
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      }),
-                      _vm.columnResult.length
-                        ? _c("td", [
-                            _vm._v(
-                              " " + _vm._s(_vm.columnResult[i]) + "\n        "
-                            )
-                          ])
-                        : _vm._e()
-                    ],
-                    2
-                  )
-                })
+                "tr",
+                [
+                  _c("th", [
+                    _vm._v("\n            Alternatives / Scenaries\n          ")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.situation.situationsScenaries, function(s) {
+                    return _c("th", { attrs: { scope: "col" } }, [
+                      _vm._v("\n            " + _vm._s(s) + "\n          ")
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _vm.columnResult.length
+                    ? _c("th", [_vm._v("Result")])
+                    : _vm._e()
+                ],
+                2
               )
             ]),
             _vm._v(" "),
             _c(
-              "b-dropdown",
-              {
-                staticClass: "m-md-2",
-                attrs: { id: "ddown1", text: "Choose the criterion" }
-              },
-              [
-                _c("b-dropdown-item", { on: { click: _vm.getPesimist } }, [
-                  _vm._v("pesimist")
-                ]),
-                _vm._v(" "),
-                _c("b-dropdown-item", { on: { click: _vm.getOptimist } }, [
-                  _vm._v("Optimist")
-                ]),
-                _vm._v(" "),
-                _c("b-dropdown-item", { on: { click: _vm.getLaplace } }, [
-                  _vm._v("Laplace")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "b-dropdown-item",
-                  { on: { click: _vm.changeTheStateOfInputHur } },
-                  [_vm._v("Hurwicz")]
-                ),
-                _vm._v(" "),
-                _c("b-dropdown-item", { attrs: { disabled: "" } }, [
-                  _vm._v("Savage")
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _vm.inputHur
-              ? _c(
-                  "div",
+              "tbody",
+              _vm._l(_vm.situation.situationsAlternatives, function(a, i) {
+                return _c(
+                  "tr",
                   [
-                    _c("b-form-input", {
-                      attrs: {
-                        id: "alphaId",
-                        type: "number",
-                        placeholder: "Put your criterion"
-                      },
-                      model: {
-                        value: _vm.alpha,
-                        callback: function($$v) {
-                          _vm.alpha = $$v
-                        },
-                        expression: "alpha"
-                      }
+                    _c("td", [_c("b", [_vm._v(_vm._s(a))])]),
+                    _vm._v(" "),
+                    _vm._l(_vm.situation.situationsScenaries, function(s, j) {
+                      return _c(
+                        "td",
+                        [
+                          _c("b-form-input", {
+                            attrs: { id: "exampleInput1", type: "text" },
+                            model: {
+                              value: _vm.arrayAux[i][j],
+                              callback: function($$v) {
+                                _vm.$set(_vm.arrayAux[i], j, $$v)
+                              },
+                              expression: "arrayAux[i][j]"
+                            }
+                          })
+                        ],
+                        1
+                      )
                     }),
-                    _vm._v(" "),
-                    _c("br"),
-                    _vm._v(" "),
-                    _c(
-                      "b-button",
-                      {
-                        attrs: {
-                          type: "submit",
-                          disabled: !_vm.control,
-                          variant: "primary"
-                        },
-                        on: { click: _vm.getHurwicz }
-                      },
-                      [_vm._v("Evaluate")]
-                    )
+                    _vm.columnResult.length
+                      ? _c("td", [
+                          _vm._v(" " + _vm._s(_vm.columnResult[i]) + " ")
+                        ])
+                      : _vm._e()
                   ],
-                  1
+                  2
                 )
-              : _vm._e(),
+              })
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-2" }, [
+              _c(
+                "div",
+                { staticClass: "row" },
+                [
+                  _c(
+                    "b-dropdown",
+                    {
+                      staticClass: "m-md-2",
+                      attrs: { id: "ddown1", text: "Choose criterion" }
+                    },
+                    [
+                      _c(
+                        "b-dropdown-item",
+                        { on: { click: _vm.getPesimist } },
+                        [_vm._v("Pesimist")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-dropdown-item",
+                        { on: { click: _vm.getOptimist } },
+                        [_vm._v("Optimist")]
+                      ),
+                      _vm._v(" "),
+                      _c("b-dropdown-item", { on: { click: _vm.getLaplace } }, [
+                        _vm._v("Laplace")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "b-dropdown-item",
+                        { on: { click: _vm.changeTheStateOfInputHur } },
+                        [_vm._v("Hurwicz")]
+                      ),
+                      _vm._v(" "),
+                      _c("b-dropdown-item", { on: { click: _vm.getSavage } }, [
+                        _vm._v("Savage")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ]),
             _vm._v(" "),
-            _c("br"),
-            _vm._v(" "),
-            _vm.bestAlternative
-              ? _c("label", [
-                  _vm._v("The best alternative it is "),
-                  _c("b", [_vm._v(_vm._s(_vm.bestAlternative))])
-                ])
-              : _vm._e()
-          ],
-          1
-        )
-      : _c("div", [_c("label", [_vm._v("No situations")])])
+            _c("div", { staticClass: "col-md-8" }, [
+              _vm.inputHur
+                ? _c("div", [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        { staticClass: "col-md-3" },
+                        [
+                          _c("b-form-input", {
+                            attrs: {
+                              id: "alphaId",
+                              type: "number",
+                              placeholder: "Put your criterion"
+                            },
+                            model: {
+                              value: _vm.alpha,
+                              callback: function($$v) {
+                                _vm.alpha = $$v
+                              },
+                              expression: "alpha"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("br")
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-md-3" },
+                        [
+                          _c(
+                            "b-button",
+                            {
+                              attrs: {
+                                type: "submit",
+                                disabled: !_vm.control,
+                                variant: "primary"
+                              },
+                              on: { click: _vm.getHurwicz }
+                            },
+                            [
+                              _vm._v(
+                                "\n                    Evaluate\n                  "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _vm.bestAlternative
+                ? _c("h3", [
+                    _c("b", [_vm._v(_vm._s(_vm.bestAlternative))]),
+                    _vm._v(" is the best alternative.")
+                  ])
+                : _vm._e()
+            ])
+          ])
+        ])
+      : _c("div", [
+          _c(
+            "h3",
+            {
+              staticClass: "text-center",
+              staticStyle: { "padding-top": "30px" }
+            },
+            [_vm._v("No situations to display.")]
+          )
+        ])
   ])
 }
 var staticRenderFns = []
