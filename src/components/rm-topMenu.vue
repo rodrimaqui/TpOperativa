@@ -3,7 +3,7 @@
     <header>
      <b-navbar toggleable type="light" variant="secondary">
      <b-nav-toggle target="nav_text_collapse"></b-nav-toggle>
-     <router-link to="/"><b-navbar-brand><b>ｄｅｃｉｓｉｏｎｓ ｔｏｏｌ</b></b-navbar-brand></router-link>
+     <router-link to="/"><b-navbar-brand><b>Decisions tool</b></b-navbar-brand></router-link>
      <b-collapse  is-nav id="nav_text_collapse">
        <b-nav is-nav-bar>
           <router-link to="/add"><a class="nav-link culo" href="#"><b>Create matrix</b></a></router-link>

@@ -12,7 +12,6 @@ export default new Vuex.Store({
     },
     getters:{
       getSituationsArray: (state,getters) => () => {
-        //return state.situationsArray.find(n => n.id == id);
         return state.situationsArray;
       },
 
@@ -28,7 +27,6 @@ export default new Vuex.Store({
 
     mutations:{
       addSituations(state,alternatives){
-        //state.situationsArray.push(Object.assign({},alternatives));
         state.situationsArray = alternatives;
       }
     }

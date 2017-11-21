@@ -17,13 +17,13 @@
         <tbody>
           <tr v-for='(a,i) in situation.situationsAlternatives'>
             <td>
-              <b>{{a}}</b> <!-- va renderizando las filas, aqui las alternativas (primer columna) -->
+              <b>{{a}}</b>
             </td>
-            <td v-for='(s,j) in situation.situationsScenaries'> <!-- va renderizando el resto de la fila -->
+            <td v-for='(s,j) in situation.situationsScenaries'>
               <b-form-input id="exampleInput1"
-                            type="text"
+                            type="number"
                               v-model='arrayAux[i][j]'
-              ></b-form-input>                                      <!-- i = fila, j = columna -->
+              ></b-form-input>
               <td v-if='columnResult.length'> {{columnResult[i]}} </td>
             </td>
           </tr>
@@ -79,7 +79,7 @@
     data(){
       return{
         situation: '',
-        arrayAux: [], //array cargado con arrays vacios por cada alternativa que hay
+        arrayAux: [],
         columnResult: [],
         alpha: 0.5,
         inputHur: false,
@@ -183,7 +183,7 @@
 			},
 
         getPesimist(){
-          this.convertToInt(); //j = fila, i = columna
+          this.convertToInt();
           let result;
           this.columnResult = [];
 
@@ -200,9 +200,7 @@
           let pesimist = this.columnResult[0];
 
           pesimist = this.getTheMaxValue(pesimist);
-          //console.log(pesimist);
           this.bestAlternative = this.getTheBestOption(pesimist);
-          //console.log(this.bestAlternative);
         },
 
         getOptimist(){
@@ -220,7 +218,6 @@
           }
           let optimist = this.columnResult[0];
           optimist = this.getTheMaxValue(optimist);
-          //console.log(optimist);
           this.bestAlternative = this.getTheBestOption(optimist);
         },
         getLaplace(){
@@ -235,7 +232,7 @@
               cant++;
             }
             ave = sum/cant;
-            this.columnResult.push(ave);
+            this.columnResult.push(ave.toFixed(2));
           }
           let laplace = this.columnResult[0];
           laplace = this.getTheMaxValue(laplace);
@@ -266,7 +263,7 @@
             }
 
             result = (bigger * (this.alpha) + (1 - this.alpha) * smaller);
-            this.columnResult.push(result);
+            this.columnResult.push(result.toFixed(2));
           }
           let hurwicz = this.columnResult[0];
           hurwicz = this.getTheMaxValue(hurwicz);

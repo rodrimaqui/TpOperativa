@@ -27054,7 +27054,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
   },
   getters: {
     getSituationsArray: (state, getters) => () => {
-      //return state.situationsArray.find(n => n.id == id);
       return state.situationsArray;
     },
 
@@ -27069,7 +27068,6 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
 
   mutations: {
     addSituations(state, alternatives) {
-      //state.situationsArray.push(Object.assign({},alternatives));
       state.situationsArray = alternatives;
     }
   }
@@ -28331,7 +28329,7 @@ var render = function() {
             _c(
               "router-link",
               { attrs: { to: "/" } },
-              [_c("b-navbar-brand", [_c("b", [_vm._v("ｄｅｃｉｓｉｏｎｓ ｔｏｏｌ")])])],
+              [_c("b-navbar-brand", [_c("b", [_vm._v("Decisions tool")])])],
               1
             ),
             _vm._v(" "),
@@ -28904,7 +28902,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -28995,7 +28993,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
   data() {
     return {
       situation: '',
-      arrayAux: [], //array cargado con arrays vacios por cada alternativa que hay
+      arrayAux: [],
       columnResult: [],
       alpha: 0.5,
       inputHur: false,
@@ -29094,7 +29092,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
     },
 
     getPesimist() {
-      this.convertToInt(); //j = fila, i = columna
+      this.convertToInt();
       let result;
       this.columnResult = [];
 
@@ -29111,9 +29109,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
       let pesimist = this.columnResult[0];
 
       pesimist = this.getTheMaxValue(pesimist);
-      //console.log(pesimist);
       this.bestAlternative = this.getTheBestOption(pesimist);
-      //console.log(this.bestAlternative);
     },
 
     getOptimist() {
@@ -29131,7 +29127,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
       }
       let optimist = this.columnResult[0];
       optimist = this.getTheMaxValue(optimist);
-      //console.log(optimist);
       this.bestAlternative = this.getTheBestOption(optimist);
     },
     getLaplace() {
@@ -29146,7 +29141,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
           cant++;
         }
         ave = sum / cant;
-        this.columnResult.push(ave);
+        this.columnResult.push(ave.toFixed(2));
       }
       let laplace = this.columnResult[0];
       laplace = this.getTheMaxValue(laplace);
@@ -29177,7 +29172,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
         }
 
         result = bigger * this.alpha + (1 - this.alpha) * smaller;
-        this.columnResult.push(result);
+        this.columnResult.push(result.toFixed(2));
       }
       let hurwicz = this.columnResult[0];
       hurwicz = this.getTheMaxValue(hurwicz);
@@ -29240,7 +29235,7 @@ var render = function() {
                         "td",
                         [
                           _c("b-form-input", {
-                            attrs: { id: "exampleInput1", type: "text" },
+                            attrs: { id: "exampleInput1", type: "number" },
                             model: {
                               value: _vm.arrayAux[i][j],
                               callback: function($$v) {
